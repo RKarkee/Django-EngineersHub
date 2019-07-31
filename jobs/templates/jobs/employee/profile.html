@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load is_already_applied %}
+{% block title %}
+    Employee Profile
+{% endblock %}
+
+
+{% block content %}
+<section class="bg-light-gray">
+    <div class="container">
+        <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <div class="text-info">
+                            <h1 style="color: #F72828;">Profile</h1>
+                        </div>
+
+                        <h3>First name: {{ user.first_name }}</h3>
+                        <h3>Last name: {{ user.last_name }}</h3>
+                        <h3>Email: {{ user.email }}</h3>
+                        <h3>Gender:{{user.gender}}</h3>
+
+                        <h3>Job Title:{{profile.title}}</h3>
+                 <div class="text-info">
+                    <h3 class="text-info" ><i class="fa fa-map-marker profile__location"></i>Location:{{ profile.location }}</h3>
+                </div>
+                <h3> Interested:
+                    {% if profile.type == '1' %}
+                    <span class="badge featured-badge badge-success">Full time</span>
+                    {% elif profile.type == '2' %}
+                    <span class="badge featured-badge badge-primary">Part time</span>
+                    {% else %}
+                    <span style="color: #ffffff;" class="badge featured-badge badge-warning">Internship</span>
+                    {% endif %}
+                </h3>
+                <h3>My work Experience: {{profile.work_experience}} years</h3>
+                <h3>Category: {{ profile.category }}</h3>
+                <h3>Contact Info:{{profile.emailContact}}</h3>
+                <h3 class="text-info"> I am expert at : *{{profile.skill1}} *{{profile.skill2}} *{{profile.skill3}} *{{profile.skill4}}</h3>
+
+                <h3 class="text-info">Salary: Negotiable</h3>
+                <h3 class="text-info">About Myself:</h3>
+                    <blockquote class="blockquote">
+                        <p>{{ profile.about_me }}</p>
+                    </blockquote>
+                <h3><img src="{{ profile.images.url }}" width="240"></h3>
+
+                </div>
+
+            </div>
+         </div>
+</section>
+{% endblock %}
